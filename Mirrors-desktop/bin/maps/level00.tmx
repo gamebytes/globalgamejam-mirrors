@@ -74,12 +74,12 @@
  </tileset>
  <layer name="a" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0tEKgDAIBVCNov7/i6O3GM1Nu5LEfRhDcLvHMRURNdbysLz91jmrf5Slt561qaO+a9+aGuHr1RFfr6avhu/tfZk+T/5MNn3f+7yZyHm896HnoY8++uij75++7HkRvqz3o6+eD/mfs3zR96Ovrm8H+g6wz3PGmzXynTlKBxs=
+   eJzt00EKACAIRFGLou5/4q6gNYLEX7gT5o1gN7MunCYeb+Zw7nvyZqBL9CYKX+TW+PCp/w1fLZ86M6svPnz48OHD95Mvqy++er7XTHz4bnxL6Ntin/onI3MAz3IHGw==
   </data>
  </layer>
  <layer name="b" width="40" height="30" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzt0sENACAIBEG0/6JtQcKiJu7jvjBHmBExwQw4pE2fPtp3om/V13k/fW/56H/u8FV+XZ8+ffr0/eurzuv0Zffv9NF315fdlw09j+zT0VefPioLcDYHCw==
+   eJztz7ENACAMA8GE/YdmAgqQkZC44tv40lXVwUa4pI2P70ffzX/53vKl9/j4+Pj4+PjONnfv8b3lS+7txsfHt24CIj8G9w==
   </data>
  </layer>
  <layer name="c" width="40" height="30" visible="0">
