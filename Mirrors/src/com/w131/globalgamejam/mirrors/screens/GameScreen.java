@@ -3,10 +3,13 @@ package com.w131.globalgamejam.mirrors.screens;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics.DisplayMode;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
@@ -15,6 +18,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.w131.globalgamejam.mirrors.Controller;
 import com.w131.globalgamejam.mirrors.KeyHandler;
+import com.w131.globalgamejam.mirrors.Orientation;
 import com.w131.globalgamejam.mirrors.SoundController;
 
 public class GameScreen implements Screen {
@@ -24,6 +28,7 @@ public class GameScreen implements Screen {
 	private TiledMap map;
 	private TiledMapTileLayer layer;
 	private OrthogonalTiledMapRenderer renderer;
+	public ShapeRenderer shapeRenderer = new ShapeRenderer();
 	private OrthographicCamera camera;
 
 	Controller controller;
@@ -60,9 +65,36 @@ public class GameScreen implements Screen {
 		renderer.getSpriteBatch().begin();
 		renderer.renderTileLayer(layer);
 		renderer.getSpriteBatch().end();
-		// END MY DRAWING
 
 		controller.render(delta);
+		
+		//Now we cover up part of the screen if both are not on it
+		if(layer.getName().contains("c")) {
+			shapeRenderer.begin(ShapeType.Filled);
+			shapeRenderer.setColor(Color.RED);
+			if(controller.mirror.onTopLeft(controller.squares.get(0).pos)) {
+				//Cover either below or to the right of the mirror
+				if(controller.mirror.dir == Orientation.VERTICAL) {
+					shapeRenderer.rect(controller.mirror.pos, 0, Gdx.graphics.getWidth() - controller.mirror.pos,  Gdx.graphics.getHeight());
+				}
+				else {
+					shapeRenderer.rect(0, controller.mirror.pos, Gdx.graphics.getWidth(),  Gdx.graphics.getHeight() - controller.mirror.pos);
+				}
+			}
+			else {
+				//Cover either above or to the left of the mirror
+				if(controller.mirror.dir == Orientation.VERTICAL) {
+					shapeRenderer.rect(0, 0, controller.mirror.pos,  Gdx.graphics.getHeight());
+				}
+				else {
+					shapeRenderer.rect(0, Gdx.graphics.getHeight(), Gdx.graphics.getWidth(),  controller.mirror.pos);
+				}
+			}
+			shapeRenderer.end();
+		}
+
+		// END MY DRAWING
+		
 	}
 
 	@Override
