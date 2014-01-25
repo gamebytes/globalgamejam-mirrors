@@ -25,10 +25,10 @@ public class Controller {
 
 		// Add squares
 		squares = new LinkedList<Square>();
-		Square square = new Square(this, Color.BLACK, new Vector2(Gdx.graphics.getWidth() - 20, 0));
+		Square square = new Square(this, Color.BLACK, screen.spawns.get(Color.BLACK));
 		square.multiplier = mirror.getMult(square.pos);
 		squares.add(square);
-		square = new Square(this, Color.WHITE, new Vector2(0, 0));
+		square = new Square(this, Color.WHITE, screen.spawns.get(Color.WHITE));
 		square.multiplier = mirror.getMult(square.pos);
 		squares.add(square);
 	}
