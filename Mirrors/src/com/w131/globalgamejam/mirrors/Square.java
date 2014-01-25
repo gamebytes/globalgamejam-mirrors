@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
 
 public class Square {
@@ -59,11 +60,32 @@ public class Square {
 			move(new Vector2(speed, 0).scl(multiplier), delta);
 		}
 	}
-
+	
+	/**
+	 * Move the square (ONLY MOVE ONE AXIS AT A TIME)
+	 * @param vec
+	 * @param delta
+	 */
 	public void move(Vector2 vec, float delta) {
 		pos.add(vec.cpy().scl(delta));
-
-		// Collisions go here
+		
+		//Collisions go here
+		if(vec.x != 0) {
+			if(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
+				pos.sub(vec.cpy().scl(delta));
+			}
+			else if(controller.screen.getCurrentLayer().getCell((int)Math.floor((pos.x + WIDTH) / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
+				pos.sub(vec.cpy().scl(delta));
+			}
+		}
+		if(vec.y != 0) {
+			if(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
+				pos.sub(vec.cpy().scl(delta));
+			}
+			else if(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor((pos.y + HEIGHT) / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
+				pos.sub(vec.cpy().scl(delta));
+			}
+		}
 	}
 
 	public void render(float delta) {
