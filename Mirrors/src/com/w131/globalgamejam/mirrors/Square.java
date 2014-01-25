@@ -69,6 +69,10 @@ public class Square {
 	public void move(Vector2 vec, float delta) {
 		pos.add(vec.cpy().scl(delta));
 		
+		checkCrossMirror(controller.mirror);
+		
+		if(crossingMirror) return;
+		
 		//Collisions go here
 		if(vec.x != 0) {
 			if(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {

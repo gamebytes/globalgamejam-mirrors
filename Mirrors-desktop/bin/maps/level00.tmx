@@ -28,22 +28,22 @@
   <image source="mirrosExit.png" width="60" height="20"/>
   <tile id="0">
    <properties>
-    <property name="color" value="000000FF"/>
+    <property name="color" value="000000ff"/>
     <property name="exit" value="true"/>
     <property name="spawn" value="false"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="color" value="FFFFFFFF"/>
+    <property name="color" value="ffffffff"/>
     <property name="exit" value="true"/>
     <property name="spawn" value="false"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="color" value="7F7F7FFF"/>
-    <property name="exit" value="yes"/>
+    <property name="color" value="7f7f7fff"/>
+    <property name="exit" value="true"/>
     <property name="spawn" value="false"/>
    </properties>
   </tile>
@@ -52,21 +52,21 @@
   <image source="mirrosSpawn.png" width="60" height="20"/>
   <tile id="0">
    <properties>
-    <property name="color" value="000000FF"/>
+    <property name="color" value="000000ff"/>
     <property name="exit" value="false"/>
     <property name="spawn" value="true"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="color" value="FFFFFFFF"/>
+    <property name="color" value="ffffffff"/>
     <property name="exit" value="false"/>
     <property name="spawn" value="true"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="color" value="7F7F7FFF"/>
+    <property name="color" value="7f7f7fff"/>
     <property name="exit" value="false"/>
     <property name="spawn" value="true"/>
    </properties>
@@ -74,7 +74,7 @@
  </tileset>
  <layer name="a" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0tEKwCAIhWEb6/1feTfbTZDL5qEF/4WEIPopFTMrThz3eza5V+/FU1Ob3Ksf8fXyWV8vx4fvzfeln9oXmT0S+Nb7ovOikd0vcx/Fvvjw4cOHb71PvW+GT3U/fP/zZf5nlW/2fvjw7ea7ABRGBw0=
+   eJzt0tEKgDAIBVCNov7/i6O3GM1Nu5LEfRhDcLvHMRURNdbysLz91jmrf5Slt561qaO+a9+aGuHr1RFfr6avhu/tfZk+T/5MNn3f+7yZyHm896HnoY8++uij75++7HkRvqz3o6+eD/mfs3zR96Ovrm8H+g6wz3PGmzXynTlKBxs=
   </data>
  </layer>
  <layer name="b" width="40" height="30" visible="0">

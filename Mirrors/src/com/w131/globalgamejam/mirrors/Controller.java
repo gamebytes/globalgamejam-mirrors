@@ -52,7 +52,7 @@ public class Controller {
 	}
 
 	public void onCrossMirror(float delta, Square square) {
-		// Change map layer, do fancy transition ??
+		// Change map layer + do fancy transition??
 		screen.switchLayer("b");
 	}
 }
