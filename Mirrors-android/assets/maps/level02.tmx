@@ -5,18 +5,18 @@
  <tileset firstgid="7" source="mirrorsSpawn.tsx"/>
  <tileset firstgid="10" source="mirrorsAlt.tsx"/>
  <layer name="a" width="40" height="30">
-  <data encoding="base64" compression="zlib">
-   eJzt0zEKwDAMQ1E3tLT3P3GmLMW0YAT+AQ0im3g2zoiIIcwhjrpTPet6T5DvSnzk/dHvzz777NP5qn327ef7M3T73l1fnV2+O/E9IB95fzvdH/H/2qdNxWCffWQfdV77ND7y/U0XyQcb
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3TMQrAMAxDUTe0tPc/caYsxbRgBP4BDSKbeDbOiIghzCGOulM963pPkO9KfOT90e/PPvvs0/mqffbt5/szdPveXV+dXb478T0gH3l/O90f8f/ap03FYJ99ZB91Xvs0PvL9TY0eA2/AEgAA
   </data>
  </layer>
  <layer name="b" width="40" height="30">
-  <data encoding="base64" compression="zlib">
-   eJzt07ENADAIA0HI/kNnhpCXcPGFW+ssQVdVgzlw6E56qz7Wt31/+vTpm/vIfmKrvn8f3Zm6V5++iS91rz7et31/+vQl+9L/V9+7j+4kcwEHqgcJ
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3TsQ0AMAgDQcj+Q2eGkJdw8YVb6yxBV1WDOXDoTnqrPta3fX/69Omb+8h+Yqu+fx/dmbpXn76JL3WvPt63fX/69CX70v9X37uP7iRzATCWGkTAEgAA
   </data>
  </layer>
  <layer name="c" width="40" height="30">
-  <data encoding="base64" compression="zlib">
-   eJzt1CsOADAIREGSOnr/+za1VUAFnzyxekcsqIhoIMuZSMdPbuc2Bl9/37s3fPjw9fFV/y/4Zu8PH75MX/X7xTd7f/jwZfqq3y8+v8+TaM8BuVYryQ==
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3UKw4AMAhEQZI6ev/7NrVVQAWfPLF6RyyoiGggy5lIx09u5zYGX3/fuzd8+PD18VX/L/hm7w8fvkxf9fvFN3t/+PBl+qrfLz6/z5NozwG3jFjvwBIAAA==
   </data>
  </layer>
 </map>
