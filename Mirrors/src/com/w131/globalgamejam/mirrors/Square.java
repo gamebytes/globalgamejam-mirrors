@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
 
 public class Square {
@@ -88,6 +87,22 @@ public class Square {
 		for(TiledMapTile corner : corners) {
 			if(corner.getProperties().get("color").equals(color.toString())) {
 				pos.sub(vec.cpy().scl(delta));
+				if(vec.x != 0) {
+					if(vec.x < 0) {
+						pos.x = (float) (Math.floor(pos.x / WIDTH) * WIDTH);
+					}
+					else {
+						pos.x = (float) (Math.floor((pos.x + WIDTH - 1) / WIDTH) * WIDTH);
+					}
+				}
+				if(vec.y != 0) {
+					if(vec.y < 0) {
+						pos.y = (float) (Math.floor(pos.y / HEIGHT) * HEIGHT);
+					}
+					else {
+						pos.y = (float) (Math.floor((pos.y + HEIGHT - 1) / HEIGHT) * HEIGHT);
+					}
+				}
 				break;
 			}
 		}
