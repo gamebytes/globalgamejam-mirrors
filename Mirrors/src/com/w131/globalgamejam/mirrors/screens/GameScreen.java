@@ -41,13 +41,12 @@ public class GameScreen implements Screen {
 		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		// BEGIN MY DRAWING
 
 		renderer.setView(camera);
+
+		// BEGIN MY DRAWING
 		renderer.getSpriteBatch().begin();
 		renderer.renderTileLayer(layer);
-		
 		player.render(renderer.getSpriteBatch());
 		// END MY DRAWING
 		
