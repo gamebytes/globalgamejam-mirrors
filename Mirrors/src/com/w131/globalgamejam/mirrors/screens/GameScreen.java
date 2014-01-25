@@ -1,8 +1,6 @@
 package com.w131.globalgamejam.mirrors.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -10,6 +8,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.w131.globalgamejam.mirrors.Controller;
+import com.w131.globalgamejam.mirrors.KeyHandler;
 
 public class GameScreen implements Screen {
 
@@ -19,19 +19,38 @@ public class GameScreen implements Screen {
 	private TiledMapTileLayer layer;
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
+	
+	Controller player;
 
 	public GameScreen(int lvlNum) {
 		this.lvlNum = lvlNum;
+		
+		// My Init
+		Gdx.input.setInputProcessor(new KeyHandler());
+		player = new Controller(this);
+	}
+	
+	public void tick(float delta) {
+		player.tick(delta);
 	}
 
 	@Override
 	public void render(float delta) {
+		// I like having a tick function...
+		tick(Gdx.graphics.getDeltaTime());
+		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		// BEGIN MY DRAWING
 
 		renderer.setView(camera);
 		renderer.getSpriteBatch().begin();
 		renderer.renderTileLayer(layer);
+		
+		player.render(renderer.getSpriteBatch());
+		// END MY DRAWING
+		
 		renderer.getSpriteBatch().end();
 	}
 
@@ -47,8 +66,6 @@ public class GameScreen implements Screen {
 		map = new TmxMapLoader().load("maps/level" + String.format("%02d", lvlNum) + ".tmx");
 		layer = (TiledMapTileLayer) map.getLayers().get("a");
 		
-		System.out.println(layer.getCell(8, 0).getTile().getProperties().get("color").equals("black"));
-		
 		renderer = new OrthogonalTiledMapRenderer(map);
 
 		camera = new OrthographicCamera();
@@ -57,7 +74,7 @@ public class GameScreen implements Screen {
 	}
 
 	public void switchLayer(String layerName) {
-		if (layerName.contains("a") || layerName.contains("b") || layerName.contains("c")) layer = (TiledMapTileLayer) map.getLayers().get(Integer.parseInt(layerName));
+		if (layerName.contains("a") || layerName.contains("b") || layerName.contains("c")) layer = (TiledMapTileLayer) map.getLayers().get(layerName);
 	}
 
 	@Override
