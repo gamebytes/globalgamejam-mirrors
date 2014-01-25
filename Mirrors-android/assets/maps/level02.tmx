@@ -9,9 +9,9 @@
    H4sIAAAAAAAAA+3TMRbAIAgDUHSp9z9xL9AhSBCezeAKP3k4zWwS3yA/9nx2PvnyfKfuL+LL7k++Pj7W/f21P/nuvj+kX6Sf077nY95q5OvcH3J/Vb6d/ytfbx+y35OB6fPuRvPIV+fb2RfJ5PFFdzHyycf1sedX5832vZgnUfDAEgAA
   </data>
  </layer>
- <layer name="b" width="40" height="30" visible="0">
+ <layer name="b" width="40" height="30">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3SwQ7AIAgDUFy2///l3RdRxMog6YGbsQ/SJiINOBd40H+id63m2/VG+073r+fx+ND3oy+vz9u/SN/q/eir69P6l8WX/X70sX/01fKNHBb7SZ/VYNmDvnw+9k/3aXkRvt6bb/bzo+/euN9qLmIfTz7aN5sXzGOUXMASAAA=
+   H4sIAAAAAAAAA+3SwQ7AIAgDUDTu/395dwMOWVVMeuCwZJFH0yIiBTgVPOg30bfSh/Vp3yv7p3kiPnR+9OX1Rfu30zebH333+qz+ZfFlz48+9o++u3wjh8e+0uc1eO6gL5+P/bN91r4dPu2ffvdz0Nd+5De7F3FPZD/a9zUvqQ0I/8ASAAA=
   </data>
  </layer>
  <layer name="c" width="40" height="30" visible="0">
