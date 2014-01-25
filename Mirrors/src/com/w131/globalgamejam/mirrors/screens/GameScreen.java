@@ -28,7 +28,7 @@ public class GameScreen implements Screen {
 	private OrthographicCamera camera;
 
 	Controller player;
-	
+
 	public HashMap<Color, Vector2> spawns;
 
 	public GameScreen(int lvlNum) {
@@ -36,7 +36,7 @@ public class GameScreen implements Screen {
 
 		// My Init
 		Gdx.input.setInputProcessor(new KeyHandler());
-		
+
 		spawns = new HashMap<Color, Vector2>();
 	}
 
@@ -75,28 +75,37 @@ public class GameScreen implements Screen {
 		map = new TmxMapLoader().load("maps/level" + String.format("%02d", lvlNum) + ".tmx");
 		layer = (TiledMapTileLayer) map.getLayers().get("a");
 
-
 		renderer = new OrthogonalTiledMapRenderer(map);
 
 		camera = new OrthographicCamera();
 
 		camera.translate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
-		
+
 		// Put the players in their spawn points
-		for(int x=0; x < layer.getWidth(); x++) {
-			for(int y=0; y < layer.getHeight(); y++) {
+		for (int x = 0; x < layer.getWidth(); x++) {
+			for (int y = 0; y < layer.getHeight(); y++) {
 				Cell cell = layer.getCell(x, y);
-				if(cell.getTile().getProperties().get("spawn").equals("true")) {
-					if(cell.getTile().getProperties().get("color").equals("000000ff")) {
+				if (cell.getTile().getProperties().get("spawn").equals("true")) {
+					System.out.println("Spawn cell found at " + x + "," + y);
+					if (cell.getTile().getProperties().get("color").equals("000000ff")) {
+						System.out.println(x + "," + y + " white");
+						System.out.println(cell.getTile().getProperties().toString());
 						spawns.put(Color.WHITE, new Vector2(x * layer.getTileWidth(), y * layer.getTileHeight()));
-					}
-					else if(cell.getTile().getProperties().get("color").equals("ffffffff")) {
+					} else if (cell.getTile().getProperties().get("color").equals("ffffffff")) {
+						System.out.println(x + "," + y + " black");
+						System.out.println(cell.getTile().getProperties().toString());
 						spawns.put(Color.BLACK, new Vector2(x * layer.getTileWidth(), y * layer.getTileHeight()));
 					}
 				}
+				if (spawns.size() >= 2) {
+					break;
+				}
 			}
+			if (spawns.size() >= 2) {
+				break;
+			}
+
 		}
-		
 
 		player = new Controller(this);
 	}
