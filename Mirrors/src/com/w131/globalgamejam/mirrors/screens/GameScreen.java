@@ -17,7 +17,7 @@ import com.w131.globalgamejam.mirrors.KeyHandler;
 
 public class GameScreen implements Screen {
 
-	private int lvlNum;
+	private int levelNum;
 
 	private TiledMap map;
 	private TiledMapTileLayer layer;
@@ -29,7 +29,7 @@ public class GameScreen implements Screen {
 	public HashMap<Color, Vector2> spawns;
 
 	public GameScreen(int lvlNum) {
-		this.lvlNum = lvlNum;
+		this.levelNum = lvlNum;
 
 		// My Init
 		Gdx.input.setInputProcessor(new KeyHandler());
@@ -69,8 +69,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void show() {
-		map = new TmxMapLoader().load("maps/level" + String.format("%02d", lvlNum) + ".tmx");
-		layer = (TiledMapTileLayer) map.getLayers().get("a");
+		loadLevel(levelNum);
 
 		renderer = new OrthogonalTiledMapRenderer(map);
 
@@ -79,6 +78,13 @@ public class GameScreen implements Screen {
 		camera.translate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
 
 		// Put the players in their spawn points
+		setSpawns();
+
+		player = new Controller(this);
+	}
+
+	private void setSpawns() {
+		spawns.clear();
 		for (int x = 0; x < layer.getWidth(); x++) {
 			for (int y = 0; y < layer.getHeight(); y++) {
 				Cell cell = layer.getCell(x, y);
@@ -101,10 +107,24 @@ public class GameScreen implements Screen {
 			if (spawns.size() >= 2) {
 				break;
 			}
+		}		
+	}
 
+	public void nextLevel() {
+		levelNum++;
+		
+		loadLevel(levelNum);
+	}
+	
+	private void loadLevel(int lvl) {
+		String levelName = "maps/level";
+		String number = ((Integer)lvl).toString();
+		if(number.length() == 1) {
+			levelName += "0";
 		}
-
-		player = new Controller(this);
+		map = new TmxMapLoader().load(levelName + number + ".tmx");
+		layer = (TiledMapTileLayer) map.getLayers().get("a");
+		setSpawns();
 	}
 
 	public void switchLayer(String layerName) {

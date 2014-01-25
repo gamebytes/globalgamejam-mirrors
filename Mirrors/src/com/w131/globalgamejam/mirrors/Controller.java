@@ -41,6 +41,11 @@ public class Controller {
 			}
 		}
 		switchLayer();
+		if(squares.get(0).onExit && squares.get(1).onExit) {
+			screen.nextLevel();
+			squares.get(0).pos = screen.spawns.get(squares.get(0).color);
+			squares.get(1).pos = screen.spawns.get(squares.get(1).color);
+		}
 	}
 
 	public void render(float delta) {

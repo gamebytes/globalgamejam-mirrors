@@ -12,7 +12,6 @@ public class Square {
 	public final int WIDTH = 20;
 	public final int HEIGHT = 20;
 	
-	public boolean crossed = false;
 
 	public Vector2 pos;
 	public float speed = 100;
@@ -21,9 +20,12 @@ public class Square {
 	public ShapeRenderer shapeRenderer = new ShapeRenderer();
 	public Color color = Color.BLACK;
 
+	public boolean crossed = false;
 	public boolean justCrossedMirror = false;
 	public boolean crossingMirror = false;
 	public Vector2 crossingDir = new Vector2();
+	
+	public boolean onExit = false;
 
 	Controller controller;
 
@@ -84,7 +86,12 @@ public class Square {
 		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor((pos.x + WIDTH - 1) / WIDTH), (int)Math.floor((pos.y + HEIGHT - 1) / HEIGHT)).getTile());
 		
 		//Collisions go here
+		onExit = false;
 		for(TiledMapTile corner : corners) {
+			// Check to see if we're on an exit
+			if(corner.getProperties().get("exit").equals("true")) {
+				onExit = true;
+			}
 			if(corner.getProperties().get("color").equals(color.toString())) {
 				pos.sub(vec.cpy().scl(delta));
 				if(vec.x != 0) {
