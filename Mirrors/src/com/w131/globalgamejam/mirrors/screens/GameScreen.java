@@ -54,23 +54,6 @@ public class GameScreen implements Screen {
 		camera = new OrthographicCamera();
 
 		camera.translate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
-
-		Gdx.input.setInputProcessor(new InputAdapter() {
-			@Override
-			public boolean keyDown(int keycode) {
-				switch (keycode) {
-				case Keys.SHIFT_LEFT:
-					layer = (TiledMapTileLayer) map.getLayers().get("b");
-					break;
-				case Keys.SHIFT_RIGHT:
-					layer = (TiledMapTileLayer) map.getLayers().get("a");
-					break;
-				default:
-					return false;
-				}
-				return true;
-			}
-		});
 	}
 
 	public void switchLayer(String layerName) {

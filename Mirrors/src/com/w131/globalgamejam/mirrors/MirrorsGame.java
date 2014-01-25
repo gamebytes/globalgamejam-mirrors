@@ -31,6 +31,7 @@ public class MirrorsGame extends Game {
 
 	@Override
 	public void dispose() {
+		super.dispose();
 		batch.dispose();
 	}
 	
@@ -54,17 +55,21 @@ public class MirrorsGame extends Game {
 		// END MY DRAWING
 		
 		batch.end();
+		super.render();
 	}
 
 	@Override
 	public void resize(int width, int height) {
+		super.resize(width, height);
 	}
 
 	@Override
 	public void pause() {
+		super.pause();
 	}
 
 	@Override
 	public void resume() {
+		super.resume();
 	}
 }
