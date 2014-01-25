@@ -11,7 +11,6 @@ import com.badlogic.gdx.math.Vector2;
 public class Square {
 	public final int WIDTH = 20;
 	public final int HEIGHT = 20;
-	
 
 	public Vector2 pos;
 	public float speed = 200;
@@ -24,7 +23,7 @@ public class Square {
 	public boolean justCrossedMirror = false;
 	public boolean crossingMirror = false;
 	public Vector2 crossingDir = new Vector2();
-	
+
 	public boolean onExit = false;
 
 	Controller controller;
@@ -65,52 +64,51 @@ public class Square {
 			move(new Vector2(speed, 0).scl(multiplier), delta);
 		}
 	}
-	
+
 	/**
 	 * Move the square (ONLY MOVE ONE AXIS AT A TIME)
+	 * 
 	 * @param vec
 	 * @param delta
 	 */
 	public void move(Vector2 vec, float delta) {
 		pos.add(vec.cpy().scl(delta));
-		
+
 		checkCrossMirror(controller.mirror);
-		
-		if(crossingMirror) return;
-		
+
+		if (crossingMirror) return;
+
 		Vector2 tpos = pos.cpy();
-		tpos.x = (int)tpos.x;
-		tpos.y = (int)tpos.y;
-		
+		tpos.x = (int) tpos.x;
+		tpos.y = (int) tpos.y;
+
 		// The cell at each of the corners
 		LinkedList<TiledMapTile> corners = new LinkedList<TiledMapTile>();
-		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor(tpos.x / WIDTH), (int)Math.floor(tpos.y / HEIGHT)).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor((tpos.x + WIDTH - 1) / WIDTH), (int)Math.floor(tpos.y / HEIGHT)).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor(tpos.x / WIDTH), (int)Math.floor((tpos.y + HEIGHT - 1) / HEIGHT)).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor((tpos.x + WIDTH - 1) / WIDTH), (int)Math.floor((tpos.y + HEIGHT - 1) / HEIGHT)).getTile());
-		
-		//Collisions go here
+		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor(tpos.x / WIDTH), (int) Math.floor(tpos.y / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor((tpos.x + WIDTH - 1) / WIDTH), (int) Math.floor(tpos.y / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor(tpos.x / WIDTH), (int) Math.floor((tpos.y + HEIGHT - 1) / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor((tpos.x + WIDTH - 1) / WIDTH), (int) Math.floor((tpos.y + HEIGHT - 1) / HEIGHT)).getTile());
+
+		// Collisions go here
 		onExit = false;
-		for(TiledMapTile corner : corners) {
+		for (TiledMapTile corner : corners) {
 			// Check to see if we're on an exit
-			if(corner.getProperties().get("exit").equals("true")) {
+			if (corner.getProperties().get("exit").equals("true")) {
 				onExit = true;
 			}
-			if(corner.getProperties().get("color").equals(color.toString()) || corner.getProperties().get("color").equals("7f7f7fff")) {
+			if (corner.getProperties().get("color").equals(color.toString()) || corner.getProperties().get("color").equals("7f7f7fff")) {
 				pos.sub(vec.cpy().scl(delta));
-				if(vec.x != 0) {
-					if(vec.x < 0) {
+				if (vec.x != 0) {
+					if (vec.x < 0) {
 						pos.x = (float) (Math.floor(pos.x / WIDTH) * WIDTH);
-					}
-					else {
+					} else {
 						pos.x = (float) (Math.floor((pos.x + WIDTH - 1) / WIDTH) * WIDTH);
 					}
 				}
-				if(vec.y != 0) {
-					if(vec.y < 0) {
+				if (vec.y != 0) {
+					if (vec.y < 0) {
 						pos.y = (float) (Math.floor(pos.y / HEIGHT) * HEIGHT);
-					}
-					else {
+					} else {
 						pos.y = (float) (Math.floor((pos.y + HEIGHT - 1) / HEIGHT) * HEIGHT);
 					}
 				}
@@ -133,8 +131,7 @@ public class Square {
 					justCrossedMirror = true;
 					if (KeyHandler.up)
 						crossingDir = new Vector2(speed, 0).scl(multiplier);
-					else if (KeyHandler.down)
-						crossingDir = new Vector2(-speed, 0).scl(multiplier);
+					else if (KeyHandler.down) crossingDir = new Vector2(-speed, 0).scl(multiplier);
 				}
 				crossingMirror = true;
 			} else {
@@ -146,13 +143,16 @@ public class Square {
 					justCrossedMirror = true;
 					if (KeyHandler.left)
 						crossingDir = new Vector2(-speed, 0).scl(multiplier);
-					else if (KeyHandler.right)
-						crossingDir = new Vector2(speed, 0).scl(multiplier);
+					else if (KeyHandler.right) crossingDir = new Vector2(speed, 0).scl(multiplier);
 				}
 				crossingMirror = true;
 			} else {
 				crossingMirror = false;
 			}
 		}
+	}
+
+	public void dispose() {
+		shapeRenderer.dispose();
 	}
 }

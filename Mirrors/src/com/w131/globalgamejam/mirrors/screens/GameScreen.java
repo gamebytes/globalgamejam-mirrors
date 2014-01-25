@@ -1,7 +1,7 @@
 package com.w131.globalgamejam.mirrors.screens;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -15,6 +15,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.w131.globalgamejam.mirrors.Controller;
 import com.w131.globalgamejam.mirrors.KeyHandler;
+import com.w131.globalgamejam.mirrors.SoundController;
 
 public class GameScreen implements Screen {
 
@@ -40,8 +41,8 @@ public class GameScreen implements Screen {
 
 	public void tick(float delta) {
 		controller.tick(delta);
-		if(KeyHandler.exit) Gdx.app.exit();
-		if(KeyHandler.reset && !KeyHandler.lastReset) resetLevel();
+		if (KeyHandler.exit) Gdx.app.exit();
+		if (KeyHandler.reset && !KeyHandler.lastReset) resetLevel();
 		KeyHandler.lastReset = KeyHandler.reset;
 	}
 
@@ -83,6 +84,8 @@ public class GameScreen implements Screen {
 
 		// Put the players in their spawn points
 		setSpawns();
+
+		SoundController.playBGMusic();
 	}
 
 	private void setSpawns() {
@@ -104,27 +107,27 @@ public class GameScreen implements Screen {
 			if (spawns.size() >= 2) {
 				break;
 			}
-		}		
+		}
 	}
 
 	public void nextLevel() {
 		levelNum++;
 		loadLevel(levelNum);
 	}
-	
+
 	public void resetLevel() {
 		loadLevel(levelNum);
 	}
-	
+
 	private void loadLevel(int lvl) {
 		String levelName = "maps/level";
-		String number = ((Integer)lvl).toString();
-		if(number.length() == 1) {
+		String number = ((Integer) lvl).toString();
+		if (number.length() == 1) {
 			levelName += "0";
 		}
 		try {
 			map = new TmxMapLoader().load(levelName + number + ".tmx");
-		} catch(Exception e) {
+		} catch (Exception e) {
 			map = new TmxMapLoader().load("maps/level99.tmx");
 		}
 		layer = (TiledMapTileLayer) map.getLayers().get("a");
@@ -139,7 +142,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void hide() {
-
+		dispose();
 	}
 
 	@Override
@@ -156,6 +159,7 @@ public class GameScreen implements Screen {
 	public void dispose() {
 		renderer.dispose();
 		map.dispose();
+		controller.dispose();
 	}
 
 	public TiledMapTileLayer getCurrentLayer() {

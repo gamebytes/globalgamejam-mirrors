@@ -41,7 +41,7 @@ public class Controller {
 			}
 		}
 		switchLayer();
-		if(squares.get(0).onExit && squares.get(1).onExit) {
+		if (squares.get(0).onExit && squares.get(1).onExit) {
 			screen.nextLevel();
 		}
 	}
@@ -70,5 +70,12 @@ public class Controller {
 		} else {
 			if (!screen.getLayerName().contains("c")) screen.switchLayer("c");
 		}
+	}
+
+	public void dispose() {
+		for (Square square : squares) {
+			square.dispose();
+		}
+		batch.dispose();
 	}
 }
