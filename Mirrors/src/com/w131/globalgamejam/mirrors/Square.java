@@ -1,15 +1,15 @@
 package com.w131.globalgamejam.mirrors;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
 
 public class Square {
 	public final int WIDTH = 20;
 	public final int HEIGHT = 20;
+	
+	public boolean crossed = false;
 
 	public Vector2 pos;
 	public float speed = 100;

@@ -49,7 +49,7 @@ public class GameScreen implements Screen {
 		renderer.renderTileLayer(layer);
 		renderer.getSpriteBatch().end();
 		// END MY DRAWING
-		
+
 		player.render(delta);
 	}
 
@@ -99,6 +99,10 @@ public class GameScreen implements Screen {
 
 	public TiledMapTileLayer getCurrentLayer() {
 		return layer;
+	}
+
+	public String getLayerName() {
+		return layer.getName();
 	}
 
 }

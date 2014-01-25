@@ -41,6 +41,7 @@ public class Controller {
 				onCrossMirror(delta, square);
 			}
 		}
+		switchLayer();
 	}
 
 	public void render(float delta) {
@@ -52,7 +53,20 @@ public class Controller {
 	}
 
 	public void onCrossMirror(float delta, Square square) {
-		// Change map layer + do fancy transition??
-		screen.switchLayer("b");
+		if (square.crossed == false) {
+			square.crossed = true;
+		} else {
+			square.crossed = false;
+		}
+	}
+
+	public void switchLayer() {
+		if (squares.get(0).crossed == true && squares.get(1).crossed == true) {
+			if (!screen.getLayerName().contains("b")) screen.switchLayer("b");
+		} else if (squares.get(0).crossed == false && squares.get(1).crossed == false) {
+			if (!screen.getLayerName().contains("a")) screen.switchLayer("a");
+		} else {
+			if (!screen.getLayerName().contains("c")) screen.switchLayer("c");
+		}
 	}
 }
