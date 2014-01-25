@@ -1,8 +1,12 @@
 package com.w131.globalgamejam.mirrors;
 
+import java.util.LinkedList;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
 
 public class Square {
@@ -73,21 +77,18 @@ public class Square {
 		
 		if(crossingMirror) return;
 		
+		// The cell at each of the corners
+		LinkedList<TiledMapTile> corners = new LinkedList<TiledMapTile>();
+		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor((pos.x + WIDTH - 1) / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor((pos.y + HEIGHT - 1) / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor((pos.x + WIDTH - 1) / WIDTH), (int)Math.floor((pos.y + HEIGHT - 1) / HEIGHT)).getTile());
+		
 		//Collisions go here
-		if(vec.x != 0) {
-			if(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
+		for(TiledMapTile corner : corners) {
+			if(corner.getProperties().get("color").equals(color.toString())) {
 				pos.sub(vec.cpy().scl(delta));
-			}
-			else if(controller.screen.getCurrentLayer().getCell((int)Math.floor((pos.x + WIDTH + 1) / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
-				pos.sub(vec.cpy().scl(delta));
-			}
-		}
-		if(vec.y != 0) {
-			if(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
-				pos.sub(vec.cpy().scl(delta));
-			}
-			else if(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor((pos.y + HEIGHT) / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
-				pos.sub(vec.cpy().scl(delta));
+				break;
 			}
 		}
 	}
