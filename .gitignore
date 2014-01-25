@@ -1,2 +1,8 @@
 *.class
 Mirrors-desktop/bin/*
+
+Mirrors-desktop/bin/maps/mirrosTiles.png
+
+Mirrors-desktop/bin/maps/mirrosExit.png
+
+Mirrors-desktop/bin/maps/level00.tmx

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="40" height="30" tilewidth="20" tileheight="20">
- <tileset firstgid="1" source="mirrorExit.tsx"/>
- <tileset firstgid="4" source="mirrorsAlt.tsx"/>
+ <tileset firstgid="1" source="mirrorsTiles.tsx"/>
+ <tileset firstgid="4" source="mirrorExit.tsx"/>
  <tileset firstgid="7" source="mirrorsSpawn.tsx"/>
- <tileset firstgid="10" source="mirrorsTiles.tsx"/>
+ <tileset firstgid="10" source="mirrorsAlt.tsx"/>
  <layer name="a" width="40" height="30">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3SMQoAIQxE0XSK3v++9oKoyWfjwhQp0pg3Mt3MOjgNHvpNOqt8rC+7fye+SD89/7Pb5fvOF+2ffPLJJ99qv7l/kkW+fN/tTW8ejy9yz5NNPt5HTiTbKi/9HplVPtaX3b+/+spDvjr56M6QMwAVsUcqwBIAAA==
+  <data encoding="base64" compression="zlib">
+   eJzt0kEKwDAIRFETGtr7nzj0BiP9UgmzcDfoE2ZGxARnwKPcu8Ws6ntzj5jP3CN9av4kH9GX7H77an30vep/7Turf/ZxPqp/9vX0de+ffd/30f/Y96+ve//s43xU/+zr5bsKfAvy0X3PzgYkKQcb
   </data>
  </layer>
  <layer name="b" width="40" height="30" visible="0">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3SQQ7AIAhEUerS3v++XkCTgj9KySzYGXiDdDPrYL1w0T3prPKxvtv39/f9yVf7/mbzmsP+1fAs3kd8nt1GdiSffBV83tmRPPKd9e3O28k385H9iazysT7dX+3/zeije2bNK18+3wAkLx4ywBIAAA==
+  <data encoding="base64" compression="zlib">
+   eJzt0sEJADAIBEFN/0WnCDd4gX34lTnYrqoG78BH2vT953u9V1+Oj+pPX6YvvT9983/0Hn27vvT+9HE+qj99mb70/vTN/9F79OlL9l3SxwcJ
   </data>
  </layer>
  <layer name="c" width="40" height="30" visible="0">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3YsQkAIAwF0TQ2IfvPKw4gSgT5CVdcY6EPCRa6mXmyuCy7/2vr7HEIXx9fbNZUfOr3h6/3/OHDh6+uT/39w8f84avrY/7w/fYp/x+QfhMAEEj9wBIAAA==
+  <data encoding="base64" compression="zlib">
+   eJzt18EKABAQRdEpO/7/f22lZkLi0lvcjYVOGUk2s6xUU1rspK9M9rvP25fkG13vfd68ycfy0efP81B80TlTfCNGwv2IjARfZHzNd+v9IPlmes13Yv7k0/zJt89H/r8ptasKHmAsYw==
   </data>
  </layer>
 </map>
