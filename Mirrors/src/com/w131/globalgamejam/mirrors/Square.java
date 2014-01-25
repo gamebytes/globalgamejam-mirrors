@@ -78,7 +78,7 @@ public class Square {
 			if(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
 				pos.sub(vec.cpy().scl(delta));
 			}
-			else if(controller.screen.getCurrentLayer().getCell((int)Math.floor((pos.x + WIDTH) / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
+			else if(controller.screen.getCurrentLayer().getCell((int)Math.floor((pos.x + WIDTH + 1) / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile().getProperties().get("color").equals(color.toString())) {
 				pos.sub(vec.cpy().scl(delta));
 			}
 		}
