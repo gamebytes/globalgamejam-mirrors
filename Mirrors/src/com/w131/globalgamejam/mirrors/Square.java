@@ -96,7 +96,7 @@ public class Square {
 			if(corner.getProperties().get("exit").equals("true")) {
 				onExit = true;
 			}
-			if(corner.getProperties().get("color").equals(color.toString())) {
+			if(corner.getProperties().get("color").equals(color.toString()) || corner.getProperties().get("color").equals("7f7f7fff")) {
 				pos.sub(vec.cpy().scl(delta));
 				if(vec.x != 0) {
 					if(vec.x < 0) {
