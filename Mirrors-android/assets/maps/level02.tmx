@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="30" tilewidth="20" tileheight="20">
+ <tileset firstgid="1" source="mirrorsTiles.tsx"/>
+ <tileset firstgid="4" source="mirrorExit.tsx"/>
+ <tileset firstgid="7" source="mirrorsSpawn.tsx"/>
+ <tileset firstgid="10" source="mirrorsAlt.tsx"/>
+ <layer name="a" width="40" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3TMRbAIAgDUHSp9z9xL9AhSBCezeAKP3k4zWwS3yA/9nx2PvnyfKfuL+LL7k++Pj7W/f21P/nuvj+kX6Sf077nY95q5OvcH3J/Vb6d/ytfbx+y35OB6fPuRvPIV+fb2RfJ5PFFdzHyycf1sedX5832vZgnUfDAEgAA
+  </data>
+ </layer>
+ <layer name="b" width="40" height="30" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3SwQ7AIAgDUFy2///l3RdRxMog6YGbsQ/SJiINOBd40H+id63m2/VG+073r+fx+ND3oy+vz9u/SN/q/eir69P6l8WX/X70sX/01fKNHBb7SZ/VYNmDvnw+9k/3aXkRvt6bb/bzo+/euN9qLmIfTz7aN5sXzGOUXMASAAA=
+  </data>
+ </layer>
+ <layer name="c" width="40" height="30" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3YMQoAMAgEQSGd/v+/IQ9IcRbiwRZXZ5CtkhGR4k5z6jvdvbdKHD5f36+3Lb7t98NHf/h8ffSHj/5874eP/vD5+ugP37Rv8//L5C40KnqBwBIAAA==
+  </data>
+ </layer>
+</map>
