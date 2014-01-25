@@ -9,6 +9,7 @@ public class KeyHandler extends InputAdapter {
 	public static boolean left = false;
 	public static boolean right = false;
 	public static boolean reset = false;
+	public static boolean lastReset = false;
 	public static boolean exit = false;
 	
 	@Override

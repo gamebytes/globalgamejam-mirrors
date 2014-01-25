@@ -1,5 +1,6 @@
 package com.w131.globalgamejam.mirrors.screens;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -24,7 +25,7 @@ public class GameScreen implements Screen {
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
 
-	Controller player;
+	Controller controller;
 
 	public HashMap<Color, Vector2> spawns;
 
@@ -38,8 +39,10 @@ public class GameScreen implements Screen {
 	}
 
 	public void tick(float delta) {
-		player.tick(delta);
+		controller.tick(delta);
 		if(KeyHandler.exit) Gdx.app.exit();
+		if(KeyHandler.reset && !KeyHandler.lastReset) resetLevel();
+		KeyHandler.lastReset = KeyHandler.reset;
 	}
 
 	@Override
@@ -58,7 +61,7 @@ public class GameScreen implements Screen {
 		renderer.getSpriteBatch().end();
 		// END MY DRAWING
 
-		player.render(delta);
+		controller.render(delta);
 	}
 
 	@Override
@@ -80,8 +83,6 @@ public class GameScreen implements Screen {
 
 		// Put the players in their spawn points
 		setSpawns();
-
-		player = new Controller(this);
 	}
 
 	private void setSpawns() {
@@ -108,7 +109,6 @@ public class GameScreen implements Screen {
 
 	public void nextLevel() {
 		levelNum++;
-		
 		loadLevel(levelNum);
 	}
 	
@@ -122,9 +122,15 @@ public class GameScreen implements Screen {
 		if(number.length() == 1) {
 			levelName += "0";
 		}
-		map = new TmxMapLoader().load(levelName + number + ".tmx");
+		try {
+			map = new TmxMapLoader().load(levelName + number + ".tmx");
+		} catch(Exception e) {
+			map = new TmxMapLoader().load("maps/level99.tmx");
+		}
 		layer = (TiledMapTileLayer) map.getLayers().get("a");
 		setSpawns();
+
+		controller = new Controller(this);
 	}
 
 	public void switchLayer(String layerName) {
