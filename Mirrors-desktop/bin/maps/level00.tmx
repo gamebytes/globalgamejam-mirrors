@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="30" tilewidth="20" tileheight="20">
+ <tileset firstgid="1" name="mirrorTiles" tilewidth="20" tileheight="20">
+  <image source="mirrosTiles.png" width="60" height="20"/>
+  <tile id="0">
+   <properties>
+    <property name="color" value="000000ff"/>
+    <property name="exit" value="false"/>
+    <property name="spawn" value="false"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="color" value="ffffffff"/>
+    <property name="exit" value="false"/>
+    <property name="spawn" value="false"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="color" value="7f7f7fff"/>
+    <property name="exit" value="false"/>
+    <property name="spawn" value="false"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="4" name="mirrorExit" tilewidth="20" tileheight="20">
+  <image source="mirrosExit.png" width="60" height="20"/>
+  <tile id="0">
+   <properties>
+    <property name="color" value="000000ff"/>
+    <property name="exit" value="true"/>
+    <property name="spawn" value="false"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="color" value="ffffffff"/>
+    <property name="exit" value="true"/>
+    <property name="spawn" value="false"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="color" value="7f7f7fff"/>
+    <property name="exit" value="true"/>
+    <property name="spawn" value="false"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="7" name="mirrorsSpawn" tilewidth="20" tileheight="20">
+  <image source="mirrosSpawn.png" width="60" height="20"/>
+  <tile id="0">
+   <properties>
+    <property name="color" value="000000ff"/>
+    <property name="exit" value="false"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="color" value="ffffffff"/>
+    <property name="exit" value="false"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="color" value="7f7f7fff"/>
+    <property name="exit" value="false"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="10" source="mirrorsAlt.tsx"/>
+ <layer name="a" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt00EKACAIRFGLou5/4q6gNYLEX7gT5o1gN7MunCYeb+Zw7nvyZqBL9CYKX+TW+PCp/w1fLZ86M6svPnz48OHD95Mvqy++er7XTHz4bnxL6Ntin/onI3MAz3IHGw==
+  </data>
+ </layer>
+ <layer name="b" width="40" height="30" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztz8EJACAMA8Dq/kM7g5hCwXvkm1xWVa1gdjhJGx/fj76uv3zzfK+bfHx8fHx8fPe+RB/fLF96s+svH99vvgPH5wcJ
+  </data>
+ </layer>
+ <layer name="c" width="40" height="30" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt1rEJACAMRcGAne6/rzsoatQrrn/Fh6RGRAWGlA1m+9pC+s73Zd4fAIzIft9u+A/0vbs/+FkHVKAsWw==
+  </data>
+ </layer>
+</map>

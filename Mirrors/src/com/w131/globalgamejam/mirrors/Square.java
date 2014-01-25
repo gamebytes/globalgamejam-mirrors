@@ -133,19 +133,21 @@ public class Square {
 					justCrossedMirror = true;
 					if (KeyHandler.up)
 						crossingDir = new Vector2(speed, 0).scl(multiplier);
-					else if (KeyHandler.down) crossingDir = new Vector2(-speed, 0).scl(multiplier);
+					else if (KeyHandler.down)
+						crossingDir = new Vector2(-speed, 0).scl(multiplier);
 				}
 				crossingMirror = true;
 			} else {
 				crossingMirror = false;
 			}
 		} else {
-			if (pos.x <= (int) mirror.pos && pos.x + WIDTH >= (int) mirror.pos) {
+			if (pos.x <= (int) mirror.pos && pos.x + WIDTH >= mirror.pos) {
 				if (!crossingMirror) {
 					justCrossedMirror = true;
 					if (KeyHandler.left)
 						crossingDir = new Vector2(-speed, 0).scl(multiplier);
-					else if (KeyHandler.right) crossingDir = new Vector2(speed, 0).scl(multiplier);
+					else if (KeyHandler.right)
+						crossingDir = new Vector2(speed, 0).scl(multiplier);
 				}
 				crossingMirror = true;
 			} else {

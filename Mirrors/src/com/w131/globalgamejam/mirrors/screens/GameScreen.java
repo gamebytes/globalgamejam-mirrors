@@ -39,6 +39,7 @@ public class GameScreen implements Screen {
 
 	public void tick(float delta) {
 		player.tick(delta);
+		if(KeyHandler.exit) Gdx.app.exit();
 	}
 
 	@Override
@@ -108,6 +109,10 @@ public class GameScreen implements Screen {
 	public void nextLevel() {
 		levelNum++;
 		
+		loadLevel(levelNum);
+	}
+	
+	public void resetLevel() {
 		loadLevel(levelNum);
 	}
 	

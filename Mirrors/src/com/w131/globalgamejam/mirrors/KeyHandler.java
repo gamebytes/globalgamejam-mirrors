@@ -8,6 +8,8 @@ public class KeyHandler extends InputAdapter {
 	public static boolean down = false;
 	public static boolean left = false;
 	public static boolean right = false;
+	public static boolean reset = false;
+	public static boolean exit = false;
 	
 	@Override
 	public boolean keyDown(int key) {
@@ -27,6 +29,14 @@ public class KeyHandler extends InputAdapter {
 		case Keys.RIGHT:
 		case Keys.A:
 			right = true;
+			break;
+		case Keys.R:
+		case Keys.SPACE:
+		case Keys.ENTER:
+			reset = true;
+			break;
+		case Keys.ESCAPE:
+			exit = true;
 			break;
 		}
 		return true;
@@ -50,6 +60,14 @@ public class KeyHandler extends InputAdapter {
 		case Keys.RIGHT:
 		case Keys.A:
 			right = false;
+			break;
+		case Keys.R:
+		case Keys.SPACE:
+		case Keys.ENTER:
+			reset = false;
+			break;
+		case Keys.ESCAPE:
+			exit = false;
 			break;
 		}
 		return true;
