@@ -87,7 +87,7 @@ public class GameScreen implements Screen {
 					shapeRenderer.rect(0, 0, controller.mirror.pos,  Gdx.graphics.getHeight());
 				}
 				else {
-					shapeRenderer.rect(0, Gdx.graphics.getHeight(), Gdx.graphics.getWidth(),  controller.mirror.pos);
+					shapeRenderer.rect(0, controller.mirror.pos, Gdx.graphics.getWidth(), Gdx.graphics.getHeight() - controller.mirror.pos);
 				}
 			}
 			shapeRenderer.end();
