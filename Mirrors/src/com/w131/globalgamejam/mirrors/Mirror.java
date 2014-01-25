@@ -4,8 +4,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Mirror {
 	// Position on either the x or y axis (depends on dir)
-	float pos;
-	Orientation dir;
+	public float pos = 0;
+	public Orientation dir = Orientation.VERTICAL;
 	
 	public Mirror() {
 		
@@ -14,6 +14,20 @@ public class Mirror {
 	public Mirror(float p, Orientation d) {
 		pos = p;
 		dir = d;
+	}
+	
+	/**
+	 * Returns true if the point is on the top or left of the mirror line
+	 * @param point
+	 * @return
+	 */
+	public boolean onTopLeft(Vector2 point) {
+		if(dir == Orientation.VERTICAL) {
+			return point.x < pos;
+		}
+		else {
+			return point.y < pos;
+		}
 	}
 	
 	/**

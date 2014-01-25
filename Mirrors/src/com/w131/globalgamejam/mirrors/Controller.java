@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.w131.globalgamejam.mirrors.screens.GameScreen;
 
 public class Controller {
-	LinkedList<Square> squares;
-	Mirror mirror;
+	public LinkedList<Square> squares;
+	public Mirror mirror;
 
 	private SpriteBatch batch;
 
@@ -55,11 +55,7 @@ public class Controller {
 	}
 
 	public void onCrossMirror(float delta, Square square) {
-		if (square.crossed == false) {
-			square.crossed = true;
-		} else {
-			square.crossed = false;
-		}
+		square.crossed = !square.crossed;
 	}
 
 	public void switchLayer() {
