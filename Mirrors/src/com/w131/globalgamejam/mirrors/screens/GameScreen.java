@@ -46,7 +46,9 @@ public class GameScreen implements Screen {
 	public void show() {
 		map = new TmxMapLoader().load("maps/level" + String.format("%02d", lvlNum) + ".tmx");
 		layer = (TiledMapTileLayer) map.getLayers().get("a");
-
+		
+		System.out.println(layer.getCell(8, 0).getTile().getProperties().get("color").equals("black"));
+		
 		renderer = new OrthogonalTiledMapRenderer(map);
 
 		camera = new OrthographicCamera();
@@ -60,13 +62,15 @@ public class GameScreen implements Screen {
 				case Keys.SHIFT_LEFT:
 					layer = (TiledMapTileLayer) map.getLayers().get("b");
 					break;
+				case Keys.SHIFT_RIGHT:
+					layer = (TiledMapTileLayer) map.getLayers().get("a");
+					break;
 				default:
 					return false;
 				}
 				return true;
 			}
 		});
-
 	}
 
 	public void switchLayer(String layerName) {
@@ -92,6 +96,10 @@ public class GameScreen implements Screen {
 	public void dispose() {
 		renderer.dispose();
 		map.dispose();
+	}
+
+	public TiledMapTileLayer getCurrentLayer() {
+		return layer;
 	}
 
 }
