@@ -72,6 +72,7 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="10" source="mirrorsAlt.tsx"/>
  <layer name="a" width="40" height="30">
   <data encoding="base64" compression="zlib">
    eJzt00EKACAIRFGLou5/4q6gNYLEX7gT5o1gN7MunCYeb+Zw7nvyZqBL9CYKX+TW+PCp/w1fLZ86M6svPnz48OHD95Mvqy++er7XTHz4bnxL6Ntin/onI3MAz3IHGw==
@@ -84,7 +85,7 @@
  </layer>
  <layer name="c" width="40" height="30" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzt1kEKACAIBECx//+5PxiV0RzmKKywoBkRCZSMA1bz7d5fvrv5OvcPACq637cX/gP51uY79w9+NgEo5AnR
+   eJzt1rEJACAMRcGAne6/rzsoatQrrn/Fh6RGRAWGlA1m+9pC+s73Zd4fAIzIft9u+A/0vbs/+FkHVKAsWw==
   </data>
  </layer>
 </map>
