@@ -78,12 +78,16 @@ public class Square {
 		
 		if(crossingMirror) return;
 		
+		Vector2 tpos = pos.cpy();
+		tpos.x = (int)tpos.x;
+		tpos.y = (int)tpos.y;
+		
 		// The cell at each of the corners
 		LinkedList<TiledMapTile> corners = new LinkedList<TiledMapTile>();
-		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor((pos.x + WIDTH - 1) / WIDTH), (int)Math.floor(pos.y / HEIGHT)).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor(pos.x / WIDTH), (int)Math.floor((pos.y + HEIGHT - 1) / HEIGHT)).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor((pos.x + WIDTH - 1) / WIDTH), (int)Math.floor((pos.y + HEIGHT - 1) / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor(tpos.x / WIDTH), (int)Math.floor(tpos.y / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor((tpos.x + WIDTH - 1) / WIDTH), (int)Math.floor(tpos.y / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor(tpos.x / WIDTH), (int)Math.floor((tpos.y + HEIGHT - 1) / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int)Math.floor((tpos.x + WIDTH - 1) / WIDTH), (int)Math.floor((tpos.y + HEIGHT - 1) / HEIGHT)).getTile());
 		
 		//Collisions go here
 		onExit = false;
