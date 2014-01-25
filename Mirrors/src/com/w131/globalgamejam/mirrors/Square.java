@@ -12,7 +12,8 @@ public class Square {
 	public final int WIDTH = 20;
 	public final int HEIGHT = 20;
 
-	public Vector2 pos;
+	public Vector2 pos = new Vector2();
+	public Vector2 del = new Vector2();
 	public float speed = 200;
 	public Vector2 multiplier = new Vector2(1, 1);
 
@@ -20,6 +21,7 @@ public class Square {
 	public Color color = Color.BLACK;
 
 	public boolean crossed = false;
+	public boolean canCrossMirror = false;
 	public boolean justCrossedMirror = false;
 	public boolean crossingMirror = false;
 	public Vector2 crossingDir = new Vector2();
@@ -40,28 +42,27 @@ public class Square {
 		pos = npos;
 	}
 
-	public void tick(float delta) {
+	public void tick(Square other, float delta) {
 		justCrossedMirror = false;
-		checkCrossMirror(controller.mirror);
 		if (crossingMirror) {
-			move(crossingDir, delta);
+			move(crossingDir, other, delta);
 		}
 	}
 
-	public void handleInput(float delta) {
+	public void handleInput(Square other, float delta) {
 		if (crossingMirror) return;
 
 		if (KeyHandler.up) {
-			move(new Vector2(0, speed).scl(multiplier), delta);
+			move(new Vector2(0, speed).scl(multiplier), other, delta);
 		}
 		if (KeyHandler.down) {
-			move(new Vector2(0, -speed).scl(multiplier), delta);
+			move(new Vector2(0, -speed).scl(multiplier), other, delta);
 		}
 		if (KeyHandler.left) {
-			move(new Vector2(-speed, 0).scl(multiplier), delta);
+			move(new Vector2(-speed, 0).scl(multiplier), other, delta);
 		}
 		if (KeyHandler.right) {
-			move(new Vector2(speed, 0).scl(multiplier), delta);
+			move(new Vector2(speed, 0).scl(multiplier), other, delta);
 		}
 	}
 
@@ -71,12 +72,29 @@ public class Square {
 	 * @param vec
 	 * @param delta
 	 */
-	public void move(Vector2 vec, float delta) {
+	public void move(Vector2 vec, Square other, float delta) {
+		Vector2 startPos = pos.cpy();
+		
 		pos.add(vec.cpy().scl(delta));
 
-		checkCrossMirror(controller.mirror);
-
-		if (crossingMirror) return;
+		del = pos.cpy().sub(startPos);
+		if(crossingMirror) {
+			float newDist = controller.mirror.distFrom(this);
+			System.out.println(crossingDir + " " + newDist + "\n---");
+			if(newDist >= WIDTH) {
+				pos = startPos.cpy();
+				float oldDist = controller.mirror.distFrom(this);
+				pos.add(vec.cpy().scl(delta));
+				if(oldDist < newDist) {
+					crossingDir = new Vector2();
+					if(other.crossingDir.len() == 0) {
+						crossingMirror = false;
+						other.crossingMirror = false;
+					}
+				}
+			}
+			return;
+		}
 
 		Vector2 tpos = pos.cpy();
 		tpos.x = (int) tpos.x;
@@ -122,34 +140,6 @@ public class Square {
 		shapeRenderer.setColor(color);
 		shapeRenderer.rect(pos.x, pos.y, WIDTH, HEIGHT);
 		shapeRenderer.end();
-	}
-
-	public void checkCrossMirror(Mirror mirror) {
-		if (mirror.dir == Orientation.HORIZONTAL) {
-			if (pos.y <= mirror.pos && pos.y + HEIGHT >= mirror.pos) {
-				if (!crossingMirror) {
-					justCrossedMirror = true;
-					if (KeyHandler.up)
-						crossingDir = new Vector2(speed, 0).scl(multiplier);
-					else if (KeyHandler.down) crossingDir = new Vector2(-speed, 0).scl(multiplier);
-				}
-				crossingMirror = true;
-			} else {
-				crossingMirror = false;
-			}
-		} else {
-			if (pos.x <= (int) mirror.pos && pos.x + WIDTH >= mirror.pos) {
-				if (!crossingMirror) {
-					justCrossedMirror = true;
-					if (KeyHandler.left)
-						crossingDir = new Vector2(-speed, 0).scl(multiplier);
-					else if (KeyHandler.right) crossingDir = new Vector2(speed, 0).scl(multiplier);
-				}
-				crossingMirror = true;
-			} else {
-				crossingMirror = false;
-			}
-		}
 	}
 
 	public void dispose() {
