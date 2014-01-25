@@ -19,17 +19,17 @@ public class GameScreen implements Screen {
 	private TiledMapTileLayer layer;
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
-	
+
 	Controller player;
 
 	public GameScreen(int lvlNum) {
 		this.lvlNum = lvlNum;
-		
+
 		// My Init
 		Gdx.input.setInputProcessor(new KeyHandler());
 		player = new Controller(this);
 	}
-	
+
 	public void tick(float delta) {
 		player.tick(delta);
 	}
@@ -38,7 +38,7 @@ public class GameScreen implements Screen {
 	public void render(float delta) {
 		// I like having a tick function...
 		tick(Gdx.graphics.getDeltaTime());
-		
+
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -47,10 +47,10 @@ public class GameScreen implements Screen {
 		// BEGIN MY DRAWING
 		renderer.getSpriteBatch().begin();
 		renderer.renderTileLayer(layer);
-		player.render(renderer.getSpriteBatch());
+		renderer.getSpriteBatch().end();
 		// END MY DRAWING
 		
-		renderer.getSpriteBatch().end();
+		player.render(delta);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class GameScreen implements Screen {
 	public void show() {
 		map = new TmxMapLoader().load("maps/level" + String.format("%02d", lvlNum) + ".tmx");
 		layer = (TiledMapTileLayer) map.getLayers().get("a");
-		
+
 		renderer = new OrthogonalTiledMapRenderer(map);
 
 		camera = new OrthographicCamera();

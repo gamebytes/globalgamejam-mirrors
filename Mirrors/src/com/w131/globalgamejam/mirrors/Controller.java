@@ -11,13 +11,18 @@ import com.w131.globalgamejam.mirrors.screens.GameScreen;
 public class Controller {
 	LinkedList<Square> squares;
 	Mirror mirror;
-	
+
+	private SpriteBatch batch;
+
 	GameScreen screen;
-	
+
 	public Controller(GameScreen gs) {
 		screen = gs;
+
+		batch = new SpriteBatch();
+
 		mirror = new Mirror(Gdx.graphics.getWidth() / 2, Orientation.VERTICAL);
-		
+
 		// Add squares
 		squares = new LinkedList<Square>();
 		Square square = new Square(this, Color.BLACK, new Vector2(Gdx.graphics.getWidth() - 20, 0));
@@ -27,25 +32,27 @@ public class Controller {
 		square.multiplier = mirror.getMult(square.pos);
 		squares.add(square);
 	}
-	
+
 	public void tick(float delta) {
-		for(Square square : squares) {
+		for (Square square : squares) {
 			square.tick(delta);
 			square.handleInput(delta);
-			if(square.justCrossedMirror) {
+			if (square.justCrossedMirror) {
 				onCrossMirror(delta, square);
 			}
 		}
 	}
-	
-	public void render(SpriteBatch batch) {
-		for(Square square : squares) {
-			square.render(batch);
+
+	public void render(float delta) {
+		batch.begin();
+		for (Square square : squares) {
+			square.render(delta);
 		}
+		batch.end();
 	}
-	
+
 	public void onCrossMirror(float delta, Square square) {
-		// Change map layer, do fancy transition ?? 
+		// Change map layer, do fancy transition ??
 		screen.switchLayer("b");
 	}
 }
