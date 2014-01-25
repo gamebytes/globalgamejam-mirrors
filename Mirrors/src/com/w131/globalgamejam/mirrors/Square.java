@@ -14,7 +14,7 @@ public class Square {
 	
 
 	public Vector2 pos;
-	public float speed = 100;
+	public float speed = 200;
 	public Vector2 multiplier = new Vector2(1, 1);
 
 	public ShapeRenderer shapeRenderer = new ShapeRenderer();

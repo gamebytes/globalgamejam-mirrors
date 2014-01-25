@@ -89,14 +89,9 @@ public class GameScreen implements Screen {
 			for (int y = 0; y < layer.getHeight(); y++) {
 				Cell cell = layer.getCell(x, y);
 				if (cell.getTile().getProperties().get("spawn").equals("true")) {
-					System.out.println("Spawn cell found at " + x + "," + y);
 					if (cell.getTile().getProperties().get("color").equals("000000ff")) {
-						System.out.println(x + "," + y + " white");
-						System.out.println(cell.getTile().getProperties().toString());
 						spawns.put(Color.WHITE, new Vector2(x * layer.getTileWidth(), y * layer.getTileHeight()));
 					} else if (cell.getTile().getProperties().get("color").equals("ffffffff")) {
-						System.out.println(x + "," + y + " black");
-						System.out.println(cell.getTile().getProperties().toString());
 						spawns.put(Color.BLACK, new Vector2(x * layer.getTileWidth(), y * layer.getTileHeight()));
 					}
 				}

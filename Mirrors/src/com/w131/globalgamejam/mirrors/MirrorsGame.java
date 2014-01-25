@@ -7,7 +7,7 @@ public class MirrorsGame extends Game {
 
 	@Override
 	public void create() {
-		setScreen(new GameScreen(2));
+		setScreen(new GameScreen(0));
 	}
 
 	@Override
