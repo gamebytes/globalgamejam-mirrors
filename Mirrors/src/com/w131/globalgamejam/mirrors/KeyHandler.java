@@ -9,9 +9,12 @@ public class KeyHandler extends InputAdapter {
 	public static boolean down = false;
 	public static boolean left = false;
 	public static boolean right = false;
+	public static boolean exit = false;
+	
 	public static boolean reset = false;
 	public static boolean lastReset = false;
-	public static boolean exit = false;
+	public static boolean pauseMusic = false;
+	public static boolean lastPauseMusic = false;
 
 	@Override
 	public boolean keyDown(int key) {
@@ -39,6 +42,9 @@ public class KeyHandler extends InputAdapter {
 			break;
 		case Keys.ESCAPE:
 			exit = true;
+			break;
+		case Keys.M:
+			pauseMusic = true;
 			break;
 		}
 		return true;
@@ -70,6 +76,9 @@ public class KeyHandler extends InputAdapter {
 			break;
 		case Keys.ESCAPE:
 			exit = false;
+			break;
+		case Keys.M:
+			pauseMusic = false;
 			break;
 		}
 		return true;

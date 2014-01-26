@@ -49,7 +49,9 @@ public class GameScreen implements Screen {
 			Gdx.app.exit();
 		}
 		if (KeyHandler.reset && !KeyHandler.lastReset) resetLevel();
+		if (KeyHandler.pauseMusic && !KeyHandler.lastPauseMusic) SoundController.toggleBGMusic();
 		KeyHandler.lastReset = KeyHandler.reset;
+		KeyHandler.lastPauseMusic = KeyHandler.pauseMusic;
 	}
 
 	@Override

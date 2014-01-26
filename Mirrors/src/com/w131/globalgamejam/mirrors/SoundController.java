@@ -18,6 +18,15 @@ public class SoundController {
 			bgMusic.setLooping(true);
 		}
 	}
+	
+	public static void toggleBGMusic() {
+		if(bgMusic.isPlaying()) {
+			bgMusic.pause();
+		}
+		else {
+			bgMusic.play();
+		}
+	}
 
 	public static void pauseBGMusic() {
 		bgMusic.pause();
