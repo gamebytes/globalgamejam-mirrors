@@ -1,6 +1,7 @@
 package com.w131.globalgamejam.mirrors;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.w131.globalgamejam.mirrors.screens.CreditsScreen;
 import com.w131.globalgamejam.mirrors.screens.GameScreen;
@@ -14,6 +15,8 @@ public class MirrorsGame extends Game {
 
 	@Override
 	public void create() {
+		Gdx.graphics.setTitle("Mirrored");
+		
 		splashScreen = new SplashScreen(this);
 		gameScreen = new GameScreen(this);
 		creditsScreen = new CreditsScreen(this);

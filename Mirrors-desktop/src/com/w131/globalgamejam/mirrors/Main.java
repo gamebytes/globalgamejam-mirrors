@@ -1,5 +1,6 @@
 package com.w131.globalgamejam.mirrors;
 
+import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
@@ -11,6 +12,10 @@ public class Main {
 		cfg.width = 800;
 		cfg.height = 600;
 		cfg.resizable = false;
+		cfg.addIcon("img/icons/icon128.png", FileType.Internal);
+		cfg.addIcon("img/icons/icon64.png", FileType.Internal);
+		cfg.addIcon("img/icons/icon32.png", FileType.Internal);
+		cfg.addIcon("img/icons/icon16.png", FileType.Internal);
 
 		new LwjglApplication(new MirrorsGame(), cfg);
 	}
