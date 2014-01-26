@@ -2,6 +2,8 @@ package com.w131.globalgamejam.mirrors.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -29,7 +31,8 @@ public class SplashScreen implements Screen {
         batch.draw(texture, 0, 0);
         batch.end();
         
-        if(Gdx.input.justTouched() || TimeUtils.millis() > startTime + SPLASH_LENGTH) {
+        if(Gdx.input.justTouched() || TimeUtils.millis() > startTime + SPLASH_LENGTH
+        		|| Gdx.input.isKeyPressed(Keys.SPACE) || Gdx.input.isKeyPressed(Keys.ENTER)){
         	game.setScreen(new GameScreen());
         }
 	}
