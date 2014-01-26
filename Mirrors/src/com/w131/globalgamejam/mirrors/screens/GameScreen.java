@@ -131,6 +131,7 @@ public class GameScreen implements Screen {
 
 	public void nextLevel() {
 		levelNum++;
+		SoundController.playSpawn();
 		loadLevel(levelNum);
 	}
 

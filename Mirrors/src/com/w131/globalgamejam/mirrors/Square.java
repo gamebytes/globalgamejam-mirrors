@@ -47,6 +47,7 @@ public class Square {
 		if (crossingMirror) {
 			move(crossingDir, other, delta);
 		}
+		checkOnExit();
 	}
 
 	public void handleInput(Square other, float delta) {
@@ -107,12 +108,7 @@ public class Square {
 		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor((tpos.x + WIDTH - 1) / WIDTH), (int) Math.floor((tpos.y + HEIGHT - 1) / HEIGHT)).getTile());
 
 		// Collisions go here
-		onExit = false;
 		for (TiledMapTile corner : corners) {
-			// Check to see if we're on an exit
-			if (corner.getProperties().get("exit").equals("true")) {
-				onExit = true;
-			}
 			if (corner.getProperties().get("color").equals(color.toString()) || corner.getProperties().get("color").equals("7f7f7fff")) {
 				pos.sub(vec.cpy().scl(delta));
 				if (vec.x != 0) {
@@ -130,6 +126,23 @@ public class Square {
 					}
 				}
 				break;
+			}
+		}
+	}
+	
+	public void checkOnExit() {
+
+		LinkedList<TiledMapTile> corners = new LinkedList<TiledMapTile>();
+		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor(pos.x / WIDTH), (int) Math.floor(pos.y / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor((pos.x + WIDTH - 1) / WIDTH), (int) Math.floor(pos.y / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor(pos.x / WIDTH), (int) Math.floor((pos.y + HEIGHT - 1) / HEIGHT)).getTile());
+		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor((pos.x + WIDTH - 1) / WIDTH), (int) Math.floor((pos.y + HEIGHT - 1) / HEIGHT)).getTile());
+
+		onExit = false;
+		for (TiledMapTile corner : corners) {
+			// Check to see if we're on an exit
+			if (corner.getProperties().get("exit").equals("true")) {
+				onExit = true;
 			}
 		}
 	}

@@ -50,8 +50,9 @@ public class Controller {
 
 		switchLayer();
 		if (squares.get(0).onExit && squares.get(1).onExit) {
-			SoundController.playSpawn();
 			screen.nextLevel();
+			squares.get(0).onExit = false;
+			squares.get(1).onExit = false;
 		}
 	}
 
