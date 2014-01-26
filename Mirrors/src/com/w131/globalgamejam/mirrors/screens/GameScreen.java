@@ -133,9 +133,14 @@ public class GameScreen implements Screen {
 		if (number.length() == 1) {
 			levelName += "0";
 		}
+		if(levelNum > 99) {
+			// Best way to exit ever
+			Gdx.app.exit();
+		}
 		try {
 			map = new TmxMapLoader().load(levelName + number + ".tmx");
 		} catch (Exception e) {
+			levelNum = 99;
 			map = new TmxMapLoader().load("maps/level99.tmx");
 		}
 		layer = (TiledMapTileLayer) map.getLayers().get("a");

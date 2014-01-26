@@ -80,7 +80,6 @@ public class Square {
 		del = pos.cpy().sub(startPos);
 		if(crossingMirror) {
 			float newDist = controller.mirror.distFrom(this);
-			System.out.println(crossingDir + " " + newDist + "\n---");
 			if(newDist >= WIDTH) {
 				pos = startPos.cpy();
 				float oldDist = controller.mirror.distFrom(this);
