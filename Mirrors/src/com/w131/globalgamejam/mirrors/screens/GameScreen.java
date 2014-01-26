@@ -89,6 +89,10 @@ public class GameScreen implements Screen {
 
 		camera.translate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
 
+		if (Gdx.app.getType().equals(Gdx.app.getType().Android)) {
+			Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		}
+
 		// Put the players in their spawn points
 		setSpawns();
 

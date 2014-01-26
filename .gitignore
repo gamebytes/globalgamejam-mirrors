@@ -18,3 +18,9 @@ Mirrors-desktop/bin/maps/mirrosExit.png
 Mirrors-desktop/bin/maps/mirrosSpawn.png
 
 Mirrors-desktop/bin/maps/mirrosSpawn.png
+
+*.apk
+
+Mirrors-android/bin/Mirrors-android.apk
+
+Mirrors-android/bin/Mirrors-android.apk
