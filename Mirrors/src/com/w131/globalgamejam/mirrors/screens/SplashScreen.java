@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.w131.globalgamejam.mirrors.MirrorsGame;
 
 public class SplashScreen implements Screen {
 	
@@ -33,7 +34,7 @@ public class SplashScreen implements Screen {
         
         if(Gdx.input.justTouched() || TimeUtils.millis() > startTime + SPLASH_LENGTH
         		|| Gdx.input.isKeyPressed(Keys.SPACE) || Gdx.input.isKeyPressed(Keys.ENTER)){
-        	game.setScreen(new GameScreen(game));
+        	game.setScreen(MirrorsGame.gameScreen);
         }
 	}
 
@@ -66,8 +67,7 @@ public class SplashScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		texture.dispose();
-		batch.dispose();
+		
 	}
 
 }

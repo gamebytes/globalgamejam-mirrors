@@ -17,6 +17,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.w131.globalgamejam.mirrors.Controller;
 import com.w131.globalgamejam.mirrors.KeyHandler;
+import com.w131.globalgamejam.mirrors.MirrorsGame;
 import com.w131.globalgamejam.mirrors.SoundController;
 
 public class GameScreen implements Screen {
@@ -150,7 +151,7 @@ public class GameScreen implements Screen {
 		}
 		if (levelNum > 99) {
 			// They're done, show credits
-			game.setScreen(new CreditsScreen());
+			game.setScreen(MirrorsGame.creditsScreen);
 		}
 		try {
 			map = new TmxMapLoader().load(levelName + number + ".tmx");
@@ -187,9 +188,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		renderer.dispose();
-		map.dispose();
-		controller.dispose();
+		
 	}
 
 	public TiledMapTileLayer getCurrentLayer() {

@@ -1,13 +1,23 @@
 package com.w131.globalgamejam.mirrors;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Screen;
+import com.w131.globalgamejam.mirrors.screens.CreditsScreen;
+import com.w131.globalgamejam.mirrors.screens.GameScreen;
 import com.w131.globalgamejam.mirrors.screens.SplashScreen;
 
 public class MirrorsGame extends Game {
 
+	public static Screen splashScreen;
+	public static Screen gameScreen;
+	public static Screen creditsScreen;
+
 	@Override
 	public void create() {
-		setScreen(new SplashScreen(this));
+		splashScreen = new SplashScreen(this);
+		gameScreen = new GameScreen(this);
+		creditsScreen = new CreditsScreen(this);
+		setScreen(splashScreen);
 	}
 
 	@Override
