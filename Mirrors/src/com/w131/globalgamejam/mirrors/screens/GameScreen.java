@@ -2,6 +2,7 @@ package com.w131.globalgamejam.mirrors.screens;
 
 import java.util.HashMap;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -101,7 +102,8 @@ public class GameScreen implements Screen {
 
 		camera.translate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
 
-		if (Gdx.app.getType().equals(Gdx.app.getType().Android)) {
+		Gdx.app.getType();
+		if (Gdx.app.getType().equals(ApplicationType.Android)) {
 			Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		}
 
