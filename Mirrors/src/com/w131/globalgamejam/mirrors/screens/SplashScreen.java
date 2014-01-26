@@ -33,7 +33,7 @@ public class SplashScreen implements Screen {
         
         if(Gdx.input.justTouched() || TimeUtils.millis() > startTime + SPLASH_LENGTH
         		|| Gdx.input.isKeyPressed(Keys.SPACE) || Gdx.input.isKeyPressed(Keys.ENTER)){
-        	game.setScreen(new GameScreen());
+        	game.setScreen(new GameScreen(game));
         }
 	}
 
@@ -66,7 +66,8 @@ public class SplashScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		
+		texture.dispose();
+		batch.dispose();
 	}
 
 }

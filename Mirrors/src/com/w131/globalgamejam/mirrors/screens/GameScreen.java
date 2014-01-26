@@ -2,6 +2,7 @@ package com.w131.globalgamejam.mirrors.screens;
 
 import java.util.HashMap;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -31,15 +32,17 @@ public class GameScreen implements Screen {
 	private OrthographicCamera camera;
 
 	Controller controller;
+	Game game;
 
 	public HashMap<Color, Vector2> spawns;
 
-	public GameScreen() {
-		this(START_LEVEL);
+	public GameScreen(Game g) {
+		this(g, START_LEVEL);
 	}
 
-	public GameScreen(int lvlNum) {
+	public GameScreen(Game g, int lvlNum) {
 		this.levelNum = lvlNum;
+		game = g;
 
 		// My Init
 		Gdx.input.setInputProcessor(new KeyHandler());
@@ -146,12 +149,14 @@ public class GameScreen implements Screen {
 			levelName += "0";
 		}
 		if (levelNum > 99) {
-			// Best way to exit ever
-			Gdx.app.exit();
+			// They're done, show credits
+			game.setScreen(new CreditsScreen());
 		}
 		try {
 			map = new TmxMapLoader().load(levelName + number + ".tmx");
 		} catch (Exception e) {
+			// If we fail loading the map, we figure that they're done
+			// Best/worst/most awful hack ever
 			levelNum = 99;
 			map = new TmxMapLoader().load("maps/level99.tmx");
 		}
