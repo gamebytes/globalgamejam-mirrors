@@ -1,2 +1,0 @@
-# Module com.w131.globalgamejam.mirrors.GwtDefinition
-# RPC service class, partial path of RPC policy file
