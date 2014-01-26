@@ -43,7 +43,11 @@ public class GameScreen implements Screen {
 
 	public void tick(float delta) {
 		controller.tick(delta);
-		if (KeyHandler.exit) Gdx.app.exit();
+		if (KeyHandler.exit) {
+			SoundController.stopBGMusic();
+			SoundController.dispose();
+			Gdx.app.exit();
+		}
 		if (KeyHandler.reset && !KeyHandler.lastReset) resetLevel();
 		KeyHandler.lastReset = KeyHandler.reset;
 	}
@@ -65,7 +69,7 @@ public class GameScreen implements Screen {
 
 		controller.render(delta);
 		// END MY DRAWING
-		
+
 	}
 
 	@Override
@@ -93,6 +97,7 @@ public class GameScreen implements Screen {
 
 	private void setSpawns() {
 		spawns.clear();
+		SoundController.playSpawn();
 		for (int x = 0; x < layer.getWidth(); x++) {
 			for (int y = 0; y < layer.getHeight(); y++) {
 				Cell cell = layer.getCell(x, y);
