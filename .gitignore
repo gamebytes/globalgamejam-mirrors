@@ -19,14 +19,11 @@ Mirrors-desktop/bin/maps/mirrosSpawn.png
 
 Mirrors-desktop/bin/maps/mirrosSpawn.png
 
-<<<<<<< HEAD
 *.apk
 
 Mirrors-android/bin/Mirrors-android.apk
 
 Mirrors-android/bin/Mirrors-android.apk
-=======
 Mirrors-html/.gwt/*
 
 Mirrors-html/war/*
->>>>>>> 075a19ba12e93d218aea77523b229b1bc7f9e9e9
