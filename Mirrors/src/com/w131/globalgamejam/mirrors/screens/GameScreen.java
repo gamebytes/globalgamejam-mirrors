@@ -20,6 +20,8 @@ import com.w131.globalgamejam.mirrors.SoundController;
 
 public class GameScreen implements Screen {
 
+	private final static int START_LEVEL = 0;
+	
 	private int levelNum;
 
 	private TiledMap map;
@@ -31,6 +33,10 @@ public class GameScreen implements Screen {
 	Controller controller;
 
 	public HashMap<Color, Vector2> spawns;
+	
+	public GameScreen() {
+		this(START_LEVEL);
+	}
 
 	public GameScreen(int lvlNum) {
 		this.levelNum = lvlNum;
@@ -49,7 +55,9 @@ public class GameScreen implements Screen {
 			Gdx.app.exit();
 		}
 		if (KeyHandler.reset && !KeyHandler.lastReset) resetLevel();
+		if (KeyHandler.pauseMusic && !KeyHandler.lastPauseMusic) SoundController.toggleBGMusic();
 		KeyHandler.lastReset = KeyHandler.reset;
+		KeyHandler.lastPauseMusic = KeyHandler.pauseMusic;
 	}
 
 	@Override
@@ -137,9 +145,14 @@ public class GameScreen implements Screen {
 		if (number.length() == 1) {
 			levelName += "0";
 		}
+		if(levelNum > 99) {
+			// Best way to exit ever
+			Gdx.app.exit();
+		}
 		try {
 			map = new TmxMapLoader().load(levelName + number + ".tmx");
 		} catch (Exception e) {
+			levelNum = 99;
 			map = new TmxMapLoader().load("maps/level99.tmx");
 		}
 		layer = (TiledMapTileLayer) map.getLayers().get("a");
