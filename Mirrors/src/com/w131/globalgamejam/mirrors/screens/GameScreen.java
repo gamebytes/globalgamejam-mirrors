@@ -21,7 +21,7 @@ import com.w131.globalgamejam.mirrors.SoundController;
 public class GameScreen implements Screen {
 
 	private final static int START_LEVEL = 0;
-	
+
 	private int levelNum;
 
 	private TiledMap map;
@@ -33,7 +33,7 @@ public class GameScreen implements Screen {
 	Controller controller;
 
 	public HashMap<Color, Vector2> spawns;
-	
+
 	public GameScreen() {
 		this(START_LEVEL);
 	}
@@ -109,7 +109,6 @@ public class GameScreen implements Screen {
 
 	private void setSpawns() {
 		spawns.clear();
-		SoundController.playSpawn();
 		for (int x = 0; x < layer.getWidth(); x++) {
 			for (int y = 0; y < layer.getHeight(); y++) {
 				Cell cell = layer.getCell(x, y);
@@ -145,7 +144,7 @@ public class GameScreen implements Screen {
 		if (number.length() == 1) {
 			levelName += "0";
 		}
-		if(levelNum > 99) {
+		if (levelNum > 99) {
 			// Best way to exit ever
 			Gdx.app.exit();
 		}

@@ -38,18 +38,19 @@ public class Controller {
 		squares.get(0).handleInput(squares.get(1), delta);
 		squares.get(1).tick(squares.get(0), delta);
 		squares.get(1).handleInput(squares.get(0), delta);
-		
+
 		doCrossMirror(delta);
-		
+
 		if (squares.get(0).justCrossedMirror) {
 			onCrossMirror(squares.get(0));
 		}
 		if (squares.get(1).justCrossedMirror) {
 			onCrossMirror(squares.get(1));
 		}
-		
+
 		switchLayer();
 		if (squares.get(0).onExit && squares.get(1).onExit) {
+			SoundController.playSpawn();
 			screen.nextLevel();
 		}
 	}
@@ -65,36 +66,32 @@ public class Controller {
 	public void onCrossMirror(Square square) {
 		square.crossed = !square.crossed;
 	}
-	
+
 	public void doCrossMirror(float delta) {
-		if(mirror.dir == Orientation.VERTICAL) {
-			if((KeyHandler.left || KeyHandler.right) && !(squares.get(0).crossingMirror || squares.get(1).crossingMirror)) {
-				if(mirror.distFrom(squares.get(0)) < CROSS_THRESHOLD
-					&& mirror.distFrom(squares.get(1)) < CROSS_THRESHOLD) {
-					//Initiate a cross for both squares if they both are in range
-					if(squares.get(0).del.x > 0 && mirror.onTopLeft(squares.get(0))
-							&& squares.get(1).del.x < 0 && !mirror.onTopLeft(squares.get(1))) {
+		if (mirror.dir == Orientation.VERTICAL) {
+			if ((KeyHandler.left || KeyHandler.right) && !(squares.get(0).crossingMirror || squares.get(1).crossingMirror)) {
+				if (mirror.distFrom(squares.get(0)) < CROSS_THRESHOLD && mirror.distFrom(squares.get(1)) < CROSS_THRESHOLD) {
+					// Initiate a cross for both squares if they both are in
+					// range
+					if (squares.get(0).del.x > 0 && mirror.onTopLeft(squares.get(0)) && squares.get(1).del.x < 0 && !mirror.onTopLeft(squares.get(1))) {
 						squares.get(0).crossingMirror = true;
 						squares.get(0).justCrossedMirror = true;
-						squares.get(0).crossingDir = squares.get(0).del.cpy().scl(1/delta);
+						squares.get(0).crossingDir = squares.get(0).del.cpy().scl(1 / delta);
 						squares.get(1).crossingMirror = true;
 						squares.get(1).justCrossedMirror = true;
-						squares.get(1).crossingDir = squares.get(1).del.cpy().scl(1/delta);
-					}
-					else if(squares.get(1).del.x > 0 && mirror.onTopLeft(squares.get(1))
-							&& squares.get(0).del.x < 0 && !mirror.onTopLeft(squares.get(0))) {
+						squares.get(1).crossingDir = squares.get(1).del.cpy().scl(1 / delta);
+					} else if (squares.get(1).del.x > 0 && mirror.onTopLeft(squares.get(1)) && squares.get(0).del.x < 0 && !mirror.onTopLeft(squares.get(0))) {
 						squares.get(0).crossingMirror = true;
 						squares.get(0).justCrossedMirror = true;
-						squares.get(0).crossingDir = squares.get(0).del.cpy().scl(1/delta);
+						squares.get(0).crossingDir = squares.get(0).del.cpy().scl(1 / delta);
 						squares.get(1).crossingMirror = true;
 						squares.get(1).justCrossedMirror = true;
-						squares.get(1).crossingDir = squares.get(1).del.cpy().scl(1/delta);				
+						squares.get(1).crossingDir = squares.get(1).del.cpy().scl(1 / delta);
 					}
 				}
 			}
-		}
-		else {
-			
+		} else {
+
 		}
 	}
 
