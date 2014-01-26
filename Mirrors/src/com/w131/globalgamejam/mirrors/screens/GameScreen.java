@@ -20,6 +20,8 @@ import com.w131.globalgamejam.mirrors.SoundController;
 
 public class GameScreen implements Screen {
 
+	private final static int START_LEVEL = 0;
+	
 	private int levelNum;
 
 	private TiledMap map;
@@ -31,6 +33,10 @@ public class GameScreen implements Screen {
 	Controller controller;
 
 	public HashMap<Color, Vector2> spawns;
+	
+	public GameScreen() {
+		this(START_LEVEL);
+	}
 
 	public GameScreen(int lvlNum) {
 		this.levelNum = lvlNum;
