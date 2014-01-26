@@ -86,34 +86,30 @@ public class KeyHandler extends InputAdapter {
 
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button) {
-		if (Gdx.app.getType().equals(Gdx.app.getType().Android)) {
-			if (x < Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
-				up = true;
-			} else if (x > Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
-				down = true;
-			}
-			if (x < Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
-				left = true;
-			} else if (x > Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
-				right = true;
-			}
+		if (x < Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
+			up = true;
+		} else if (x > Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
+			down = true;
+		}
+		if (x < Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
+			left = true;
+		} else if (x > Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
+			right = true;
 		}
 		return false;
 	}
 
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
-		if (Gdx.app.getType().equals(Gdx.app.getType().Android)) {
-			if (x < Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
-				up = false;
-			} else if (x > Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
-				down = false;
-			}
-			if (x < Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
-				left = false;
-			} else if (x > Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
-				right = false;
-			}
+		if (x < Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
+			up = false;
+		} else if (x > Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
+			down = false;
+		}
+		if (x < Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
+			left = false;
+		} else if (x > Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
+			right = false;
 		}
 		return false;
 	}
