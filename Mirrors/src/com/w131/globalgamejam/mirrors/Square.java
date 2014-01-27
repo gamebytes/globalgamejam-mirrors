@@ -143,11 +143,21 @@ public class Square {
 	public void checkOnExit() {
 
 		LinkedList<TiledMapTile> corners = new LinkedList<TiledMapTile>();
-		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor(pos.x / WIDTH), (int) Math.floor(pos.y / HEIGHT)).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor((pos.x + WIDTH - 1) / WIDTH), (int) Math.floor(pos.y / HEIGHT)).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor(pos.x / WIDTH), (int) Math.floor((pos.y + HEIGHT - 1) / HEIGHT)).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.floor((pos.x + WIDTH - 1) / WIDTH), (int) Math.floor((pos.y + HEIGHT - 1) / HEIGHT)).getTile());
 
+		Cell cell;
+		cell = controller.screen.getCurrentLayer().getCell((int) Math.floor(pos.x / WIDTH), (int) Math.floor(pos.y / HEIGHT));
+		if(cell != null)
+			corners.add(cell.getTile());
+		cell = controller.screen.getCurrentLayer().getCell((int) Math.floor((pos.x + WIDTH - 1) / WIDTH), (int) Math.floor(pos.y / HEIGHT));
+		if(cell != null)
+			corners.add(cell.getTile());
+		cell = controller.screen.getCurrentLayer().getCell((int) Math.floor(pos.x / WIDTH), (int) Math.floor((pos.y + HEIGHT - 1) / HEIGHT));
+		if(cell != null)
+			corners.add(cell.getTile());
+		cell = controller.screen.getCurrentLayer().getCell((int) Math.floor((pos.x + WIDTH - 1) / WIDTH), (int) Math.floor((pos.y + HEIGHT - 1) / HEIGHT));
+		if(cell != null)
+			corners.add(cell.getTile());
+		
 		onExit = false;
 		for (TiledMapTile corner : corners) {
 			// Check to see if we're on an exit
