@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Mirrors"/>
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/Mirrors/libs/gdx.jar" sourcepath="/Mirrors/libs/gdx-sources.jar"/>
 	<classpathentry kind="lib" path="/Mirrors/libs/gdx-sources.jar"/>

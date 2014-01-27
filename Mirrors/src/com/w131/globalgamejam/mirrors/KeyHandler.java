@@ -2,6 +2,7 @@ package com.w131.globalgamejam.mirrors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Input.Keys;
 
 public class KeyHandler extends InputAdapter {
@@ -86,30 +87,34 @@ public class KeyHandler extends InputAdapter {
 
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button) {
-		if (x < Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
-			up = true;
-		} else if (x > Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
-			down = true;
-		}
-		if (x < Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
-			left = true;
-		} else if (x > Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
-			right = true;
+		if(Gdx.app.getType() == ApplicationType.Android) {
+			if (x < Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
+				up = true;
+			} else if (x > Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
+				down = true;
+			}
+			if (x < Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
+				left = true;
+			} else if (x > Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
+				right = true;
+			}
 		}
 		return false;
 	}
 
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
-		if (x < Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
-			up = false;
-		} else if (x > Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
-			down = false;
-		}
-		if (x < Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
-			left = false;
-		} else if (x > Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
-			right = false;
+		if(Gdx.app.getType() == ApplicationType.Android) {
+			if (x < Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
+				up = false;
+			} else if (x > Gdx.graphics.getWidth() / 2 && y < Gdx.graphics.getHeight() / 2) {
+				down = false;
+			}
+			if (x < Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
+				left = false;
+			} else if (x > Gdx.graphics.getWidth() / 2 && y > Gdx.graphics.getHeight() / 2) {
+				right = false;
+			}
 		}
 		return false;
 	}
