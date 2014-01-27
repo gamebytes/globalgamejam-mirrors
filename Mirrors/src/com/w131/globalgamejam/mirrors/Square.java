@@ -2,11 +2,11 @@ package com.w131.globalgamejam.mirrors;
 
 import java.util.LinkedList;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
 
 public class Square {
@@ -103,10 +103,19 @@ public class Square {
 
 		// The cell at each of the corners
 		LinkedList<TiledMapTile> corners = new LinkedList<TiledMapTile>();
-		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.min(Gdx.graphics.getWidth() - 1, Math.max(0, Math.floor(tpos.x / WIDTH))), (int) Math.min(Gdx.graphics.getHeight() - 1, Math.max(0, Math.floor(tpos.y / HEIGHT)))).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.min(Gdx.graphics.getWidth() - 1, Math.max(0, Math.floor((tpos.x + WIDTH - 1) / WIDTH))), (int) Math.min(Gdx.graphics.getHeight() - 1, Math.max(0, Math.floor(tpos.y / HEIGHT)))).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.min(Gdx.graphics.getWidth() - 1, Math.max(0, Math.floor(tpos.x / WIDTH))), (int) Math.min(Gdx.graphics.getHeight() - 1, Math.max(0, Math.floor((tpos.y + HEIGHT - 1) / HEIGHT)))).getTile());
-		corners.add(controller.screen.getCurrentLayer().getCell((int) Math.min(Gdx.graphics.getWidth() - 1, Math.max(0, Math.floor((tpos.x + WIDTH - 1) / WIDTH))), (int) Math.min(Gdx.graphics.getHeight() - 1, Math.max(0, Math.floor((tpos.y + HEIGHT - 1) / HEIGHT)))).getTile());
+		Cell cell;
+		cell = controller.screen.getCurrentLayer().getCell((int) Math.floor(tpos.x / WIDTH), (int) Math.floor(tpos.y / HEIGHT));
+		if(cell != null)
+			corners.add(cell.getTile());
+		cell = controller.screen.getCurrentLayer().getCell((int) Math.floor((tpos.x + WIDTH - 1) / WIDTH), (int) Math.floor(tpos.y / HEIGHT));
+		if(cell != null)
+			corners.add(cell.getTile());
+		cell = controller.screen.getCurrentLayer().getCell((int) Math.floor(tpos.x / WIDTH), (int) Math.floor((tpos.y + HEIGHT - 1) / HEIGHT));
+		if(cell != null)
+			corners.add(cell.getTile());
+		cell = controller.screen.getCurrentLayer().getCell((int) Math.floor((tpos.x + WIDTH - 1) / WIDTH), (int) Math.floor((tpos.y + HEIGHT - 1) / HEIGHT));
+		if(cell != null)
+			corners.add(cell.getTile());
 
 		// Collisions go here
 		for (TiledMapTile corner : corners) {
