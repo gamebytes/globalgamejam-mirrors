@@ -54,7 +54,7 @@ public class GameScreen implements Screen {
 
 	public void tick(float delta) {
 		controller.tick(delta);
-		if (KeyHandler.exit) {
+		if (KeyHandler.exit && Gdx.app.getType() != ApplicationType.WebGL) {
 			SoundController.stopBGMusic();
 			SoundController.dispose();
 			Gdx.app.exit();

@@ -1,5 +1,6 @@
 package com.w131.globalgamejam.mirrors.screens;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -24,7 +25,7 @@ public class CreditsScreen implements Screen {
         batch.draw(texture, 0, 0);
         batch.end();
         
-        if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+        if(Gdx.input.isKeyPressed(Keys.ESCAPE) && Gdx.app.getType() != ApplicationType.WebGL) {
         	Gdx.app.exit();
         }
         if(Gdx.input.isKeyPressed(Keys.M)) {
