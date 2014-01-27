@@ -10,6 +10,5 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gdx-backend-gwt-sources.jar"/>
 	<classpathentry kind="lib" path="/Mirrors/libs/tween-engine-api.jar" sourcepath="/Mirrors/libs/tween-engine-api-sources.jar"/>
 	<classpathentry kind="lib" path="/Mirrors/libs/tween-engine-api-sources.jar"/>
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
