@@ -13,29 +13,31 @@ import com.w131.globalgamejam.mirrors.SoundController;
 public class CreditsScreen implements Screen {
 	SpriteBatch batch;
 	Texture texture;
-	
+
 	public CreditsScreen(Game g) {
-		
+
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-        batch.draw(texture, 0, 0);
-        batch.end();
-        
-        if(Gdx.input.isKeyPressed(Keys.ESCAPE) && Gdx.app.getType() != ApplicationType.WebGL) {
-        	Gdx.app.exit();
-        }
-        if(Gdx.input.isKeyPressed(Keys.M)) {
-        	SoundController.toggleBGMusic();
-        }
+		batch.draw(texture, 0, 0);
+		batch.end();
+
+		if (Gdx.input.isKeyPressed(Keys.ESCAPE) && Gdx.app.getType() != ApplicationType.WebGL) {
+			SoundController.stopBGMusic();
+			SoundController.dispose();
+			Gdx.app.exit();
+		}
+		if (Gdx.input.isKeyPressed(Keys.M)) {
+			SoundController.toggleBGMusic();
+		}
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		
+
 	}
 
 	@Override
@@ -46,22 +48,22 @@ public class CreditsScreen implements Screen {
 
 	@Override
 	public void hide() {
-		
+
 	}
 
 	@Override
 	public void pause() {
-		
+
 	}
 
 	@Override
 	public void resume() {
-		
+
 	}
 
 	@Override
 	public void dispose() {
-		
+		batch.dispose();
+		texture.dispose();
 	}
-
 }
